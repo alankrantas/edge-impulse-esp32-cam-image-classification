@@ -22,7 +22,7 @@ You can find my published project here: https://studio.edgeimpulse.com/public/76
 
 ```ei-esp32-cam-cat-dog-arduino-1.0.4.zip``` is the downloaded Arduino library which can be imported into yout Ardiono IDE.
 
-The inference time is 2607 ms, which is not very fast,  with mostly good results. I don't know yet if different image sets or models may effect the result.
+The camera captures 240x240 images and resize them into 96x96. The inference time is 2607 ms (2.6 secs) per image, which is not very fast,  with mostly good results. I don't know yet if different image sets or models may effect the result.
 
 ![bogdan-farca-CEx86maLUSc-unsplash](https://user-images.githubusercontent.com/44191076/153636524-9b2edab9-7c50-4aa1-9d6e-74477d67011f.jpg)
 
