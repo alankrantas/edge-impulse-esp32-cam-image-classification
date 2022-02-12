@@ -14,7 +14,7 @@ This example does not output image via a web server, it can be modified to run i
 
 I used Microsoft's [Kaggle Cats and Dogs Dataset](https://www.microsoft.com/en-us/download/details.aspx?id=54765) which has 12,500 cats and 12,500 dogs. 24,969 photos had successfully uploaded and split into 80-20% training/test sets.
 
-The model I choose was ```MobileNetV1 96x96 0.25 (no final dense layer, 0.1 dropout)``` with transfer learning. Since free Edge Impulse accounts has a the training time limit of 20 minutes per job, I can only train the model for 5 cycles. (You can go ask for more on the forum though...) I imagine if you have only a dozen images per class, you can try better models or longer training cycles.
+The model I choose was ```MobileNetV1 96x96 0.25 (no final dense layer, 0.1 dropout)``` with transfer learning. Since free Edge Impulse accounts has a training time limit of 20 minutes per job, I can only train the model for 5 cycles. (You can go [ask for more](https://forum.edgeimpulse.com/t/err-deadlineexceeded-ways-to-fix-this/2354/2) though...) I imagine if you have only a dozen images per class, you can try better models or longer training cycles.
 
 Anyway, I got ```89.8%``` accuracy for training set and ```86.97%``` for test set, which seems to be decent enough.
 
