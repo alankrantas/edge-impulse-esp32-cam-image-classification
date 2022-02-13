@@ -8,6 +8,8 @@ This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpuls
 
 > See the original example repo or [this article](https://www.survivingwithandroid.com/tinyml-esp32-cam-edge-image-classification-with-edge-impulse/) about how to generate your own model on Edge Impulse. You can also still run the original example by copy every libraries in this example to the project directory, then re-open the .ino script.
 
+> You can also enable the flashlight by uncommenting the last two lines in ```setup()```.
+
 This example does not output image via a web server, it can be modified to run in anyway you like, as long as you can point the camera to the images's direction. Be noted that you won't be able to read anything in the serial port monitor if you use Arduino IDE 2.0!
 
 ## The Example Model - Cat & Dog Classification
