@@ -2,7 +2,7 @@
 
 ![41Ub2S0SjXL _AC_](https://user-images.githubusercontent.com/44191076/153631624-e13576b3-b440-4cd0-8a42-fd29cbe25a2d.jpg)
 
-This example is for running a MobileNet neural network model on a 10-dollar Ai-Thinker ESP32-CAM board, preferably with a ESP32-CAM-MB programmer board (or use an external USB-TTL module, see [here](https://randomnerdtutorials.com/program-upload-code-esp32-cam/)). You also need to install [Arduino-ESP32](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) board support and choose ```Ai Thinker ESP32-CAM```.
+This example is for running a MobileNet neural network model on a 10-dollar Ai-Thinker ESP32-CAM board, preferably with a ESP32-CAM-MB programmer board (or use an external USB-TTL module, see [here](https://randomnerdtutorials.com/program-upload-code-esp32-cam/)). You also need to install [Arduino-ESP32](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) board support in Arduino IDE and select ```Ai Thinker ESP32-CAM```.
 
 This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpulse/example-esp32-cam) with simplified code and copied necessary libraries from Espressif's [esp-face](https://github.com/Yuri-R-Studio/esp-face). ```esp-face``` had been changed a lot into [esp-dl](https://github.com/espressif/esp-dl) and thus broke the original example. The original example also requires WiFi and the user has to refresh the webpage to classify a new image.
 
