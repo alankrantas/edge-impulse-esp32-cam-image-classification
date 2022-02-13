@@ -63,6 +63,10 @@ void setup() {
   }
 
   Serial.println("Camera Ready!");
+  
+  // turn on the flashlight if you need it:
+  // pinMode(4, OUTPUT);
+  // digitalWrite(4, HIGH);
 }
 
 // main loop
