@@ -2,7 +2,9 @@
 
 ![41Ub2S0SjXL _AC_](https://user-images.githubusercontent.com/44191076/153631624-e13576b3-b440-4cd0-8a42-fd29cbe25a2d.jpg)
 
-This example is for running a micro neural network model on a 10-dollar Ai-Thinker ESP32-CAM board and show the result on a small TFT LCD display. This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpulse/example-esp32-cam) with simplified code, TFT support and copied necessary libraries from Espressif's [esp-face](https://github.com/Yuri-R-Studio/esp-face). ```esp-face``` had been changed a lot into [esp-dl](https://github.com/espressif/esp-dl) and thus broke the original example. The original example requires WiFi and has image lagging problems.
+This example is for running a micro neural network model on the 10-dollar Ai-Thinker ESP32-CAM board and show the image classification results on a small TFT LCD display.
+
+This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpulse/example-esp32-cam) with simplified code, TFT support and copied necessary libraries from Espressif's [esp-face](https://github.com/Yuri-R-Studio/esp-face). ```esp-face``` had been changed a lot into [esp-dl](https://github.com/espressif/esp-dl) and thus broke the original example. The original example requires WiFi and has image lagging problems.
 
 > See the original example repo or [this article](https://www.survivingwithandroid.com/tinyml-esp32-cam-edge-image-classification-with-edge-impulse/) about how to generate your own model on Edge Impulse. You can also still run the original example by copy every libraries in this example to the project directory, then re-open the .ino script.
 
@@ -18,6 +20,8 @@ The following is needed in your Arduino IDE:
 Be noted that you won't be able to read any serial output if you use Arduino IDE 2.0!
 
 ## Wiring
+
+![pinout](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/raw/main/ESP32-CAM-pinout-new.png)
 
 ![wiring](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/raw/main/esp32-cam-edge-impulse.png)
 
