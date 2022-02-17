@@ -25,7 +25,7 @@ Be noted that you won't be able to read any serial output if you use Arduino IDE
 
 ![wiring](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/raw/main/esp32-cam-edge-impulse.png)
 
-The whole system is powered from a power module that can output 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger to provide stable power.
+The whole system is powered from a power module that can output both 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger (power modules require 6V+) to provide stable power.
 
 | USB-TTL pins | ESP32-CAM |
 | --- | --- |
@@ -43,7 +43,7 @@ The USB-TTL's GND should be connected to the breadboard, not the ESP32-CAM itsel
 | DC | GPIO 2 |
 | CS | GPIO 15 |
 
-The script will display a 120x120 image on the TFT, so any 160x128 or 128x128 versions can be used. But you might want to change the parameter in ```tft.initR(INITR_GREENTAB);``` to ```INITR_REDTAB''' or '''INITR_BLACKTAB``` to get correct text colors.
+The script will display a 120x120 image on the TFT, so any 160x128 or 128x128 versions can be used. But you might want to change the parameter in ```tft.initR(INITR_GREENTAB);``` to ```INITR_REDTAB``` or ```INITR_BLACKTAB``` to get correct text colors.
 
 | Button | ESP32-CAM |
 | --- | --- |
