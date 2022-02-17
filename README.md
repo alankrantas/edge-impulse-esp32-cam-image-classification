@@ -42,6 +42,7 @@ The USB-TTL's GND should be connected to the breadboard, not the ESP32-CAM itsel
 | RESET (RST) | GPIO 12 |
 | DC | GPIO 2 |
 | CS | GPIO 15 |
+| BL (back light) | 3V3 |
 
 The script will display a 120x120 image on the TFT, so any 160x128 or 128x128 versions can be used. But you might want to change the parameter in ```tft.initR(INITR_GREENTAB);``` to ```INITR_REDTAB``` or ```INITR_BLACKTAB``` to get correct text colors.
 
