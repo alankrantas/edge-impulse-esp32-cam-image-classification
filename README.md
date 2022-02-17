@@ -1,16 +1,52 @@
-# MobileNet Image Classification on ESP32-CAM and Edge Impulse (TinyML)
+# Live Image Classification on ESP32-CAM and ST7735 TFT using MobileNet v1 from Edge Impulse (TinyML)
 
 ![41Ub2S0SjXL _AC_](https://user-images.githubusercontent.com/44191076/153631624-e13576b3-b440-4cd0-8a42-fd29cbe25a2d.jpg)
 
-This example is for running a MobileNet neural network model on a 10-dollar Ai-Thinker ESP32-CAM board, preferably with a ESP32-CAM-MB programmer board (or use an external USB-TTL module, see [here](https://randomnerdtutorials.com/program-upload-code-esp32-cam/)). You also need to install [Arduino-ESP32](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) board support in Arduino IDE and select ```Ai Thinker ESP32-CAM```.
-
-This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpulse/example-esp32-cam) with simplified code and copied necessary libraries from Espressif's [esp-face](https://github.com/Yuri-R-Studio/esp-face). ```esp-face``` had been changed a lot into [esp-dl](https://github.com/espressif/esp-dl) and thus broke the original example. The original example also requires WiFi and the user has to refresh the webpage to classify a new image.
+This example is for running a micro neural network model on a 10-dollar Ai-Thinker ESP32-CAM board and show the result on a small TFT LCD display. This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpulse/example-esp32-cam) with simplified code, TFT support and copied necessary libraries from Espressif's [esp-face](https://github.com/Yuri-R-Studio/esp-face). ```esp-face``` had been changed a lot into [esp-dl](https://github.com/espressif/esp-dl) and thus broke the original example. The original example requires WiFi and has image lagging problems.
 
 > See the original example repo or [this article](https://www.survivingwithandroid.com/tinyml-esp32-cam-edge-image-classification-with-edge-impulse/) about how to generate your own model on Edge Impulse. You can also still run the original example by copy every libraries in this example to the project directory, then re-open the .ino script.
 
-> You can also enable the flashlight by uncommenting the last two lines in ```setup()```.
+## Setup
 
-This example does not output image via a web server, it can be modified to run in anyway you like, as long as you can point the camera to the images's direction. Be noted that you won't be able to read anything in the serial port monitor if you use Arduino IDE 2.0!
+The following is needed in your Arduino IDE:
+
+* [Arduino-ESP32 board support](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) (select ```Ai Thinker ESP32-CAM```)
+* [Adafruit GFX Library](https://github.com/adafruit/Adafruit-GFX-Library)
+* [Adafruit ST7735 and ST7789 Library](https://github.com/adafruit/Adafruit-ST7735-Library)
+* All library files in this repo (simply open the .ino to import them)
+
+Be noted that you won't be able to read any serial output if you use Arduino IDE 2.0!
+
+## Wiring
+
+![wiring](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/raw/main/esp32-cam-edge-impulse.png)
+
+The whole system is powered from a power module that can output 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger to provide stable power.
+
+| USB-TTL pins | ESP32-CAM |
+| --- | --- |
+| Tx | GPIO 3 (UOR) |
+| Rx | GPIO 1 (UOT) |
+| GND | GND |
+
+The USB-TTL's GND should be connected to the breadboard, not the ESP32-CAM itself. If you want to upload code, disconnect power then connect GPIO 0 to GND (also should be on the breadboard), then power it up. It would be in flash mode. (The alternative way is remove the ESP32-CAM itself and use the ESP32-CAM-MB programmer board.)
+
+| TFT pins | ESP32-CAM |
+| --- | --- |
+| SCK (SCL) | GPIO 14 |
+| MOST (SDA) | GPIO 13 |
+| RESET (RST) | GPIO 12 |
+| DC | GPIO 2 |
+| CS | GPIO 15 |
+
+The script will display a 120x120 image on the TFT, so any 160x128 or 128x128 versions can be used. But you might want to change the parameter in ```tft.initR(INITR_GREENTAB);``` to ```INITR_REDTAB''' or '''INITR_BLACKTAB``` to get correct text colors.
+
+| Button | ESP32-CAM |
+| --- | --- |
+| BTN | 3V3 |
+| BTN | GPIO 4 |
+
+Be noted that since the button pin is shared with the flash LED (this is the available pin left; GPIO 16 is camera-related), the button has to be **pulled down** with two 10 KΩ resistors.
 
 ## The Example Model - Cat & Dog Classification
 
