@@ -8,6 +8,8 @@ This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpuls
 
 > See the original example repo or [this article](https://www.survivingwithandroid.com/tinyml-esp32-cam-edge-image-classification-with-edge-impulse/) about how to generate your own model on Edge Impulse. You can also still run the original example by copy every libraries in this example to the project directory, then re-open the .ino script.
 
+![demo](https://user-images.githubusercontent.com/44191076/154735134-12b59e38-79d6-4890-945c-db0604b0444e.JPG)
+
 ## Setup
 
 The following is needed in your Arduino IDE:
@@ -25,7 +27,7 @@ Be noted that you won't be able to read any serial output if you use Arduino IDE
 
 ![wiring](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/raw/main/esp32-cam-edge-impulse.png)
 
-The whole system is powered from a power module that can output both 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger (power modules require 6V+) to provide stable power.
+The whole system is powered from a power module that can output both 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger (power modules require 6V+) to provide stable power. My power module can output 500 mA max (you don't need a lot since we don't use WiFi).
 
 | USB-TTL pins | ESP32-CAM |
 | --- | --- |
