@@ -17,9 +17,8 @@ The following is needed in your Arduino IDE:
 * [Arduino-ESP32 board support](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) (select ```Ai Thinker ESP32-CAM```)
 * [Adafruit GFX Library](https://github.com/adafruit/Adafruit-GFX-Library)
 * [Adafruit ST7735 and ST7789 Library](https://github.com/adafruit/Adafruit-ST7735-Library)
-* All library files in this repo (simply open the .ino to import them)
-
-Download the directory [edge-impulse-esp32-cam](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam) and open the .ino file.
+* [Import](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries) the Edge Impulse model library
+* Download [edge-impulse-esp32-cam](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam) from this repo and open the .ino file in the directory.
 
 Be noted that you won't be able to read any serial output if you use Arduino IDE 2.0!
 
