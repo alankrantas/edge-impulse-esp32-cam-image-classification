@@ -19,6 +19,8 @@ The following is needed in your Arduino IDE:
 * [Adafruit ST7735 and ST7789 Library](https://github.com/adafruit/Adafruit-ST7735-Library)
 * All library files in this repo (simply open the .ino to import them)
 
+Download the directory [edge-impulse-esp32-cam](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam) and open the .ino file.
+
 Be noted that you won't be able to read any serial output if you use Arduino IDE 2.0!
 
 ## Wiring
@@ -72,6 +74,10 @@ You can find my published Edge Impulse project here: [esp32-cam-cat-dog](https:/
 [ei-esp32-cam-cat-dog-arduino-1.0.4.zip](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/blob/main/ei-esp32-cam-cat-dog-arduino-1.0.4.zip) is the downloaded Arduino library which can be imported into Ardiono IDE.
 
 The camera captures 240x240 images and resize them into 96x96. The inference time is 2607 ms (2.6 secs) per image, which is not very fast,  with mostly good results. I don't know yet if different image sets or models may effect the result.
+
+## Bare Example Version
+
+The [edge-impulse-esp32-cam-bare](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam-bare) is the version that dosen't use a TFT display. You can only read the predict results via serial port.
 
 ![bogdan-farca-CEx86maLUSc-unsplash](https://user-images.githubusercontent.com/44191076/153636524-9b2edab9-7c50-4aa1-9d6e-74477d67011f.jpg)
 
