@@ -77,7 +77,7 @@ The camera captures 240x240 images and resize them into 96x96. The inference tim
 
 ## Bare Example Version
 
-The [edge-impulse-esp32-cam-bare](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam-bare) is the version that dosen't use a TFT display. You can only read the predict results via serial port.
+The [edge-impulse-esp32-cam-bare](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam-bare) is the version that dosen't use an external display. You can only try to point the camera to the images and read the prediction via serial port.
 
 ![bogdan-farca-CEx86maLUSc-unsplash](https://user-images.githubusercontent.com/44191076/153636524-9b2edab9-7c50-4aa1-9d6e-74477d67011f.jpg)
 
