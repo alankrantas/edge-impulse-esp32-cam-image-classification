@@ -10,6 +10,8 @@ This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpuls
 
 ![demo](https://user-images.githubusercontent.com/44191076/154735134-12b59e38-79d6-4890-945c-db0604b0444e.JPG)
 
+See the [video demonstration](https://www.youtube.com/watch?v=UoWfiEZE0Y4)
+
 ## Setup
 
 The following is needed in your Arduino IDE:
@@ -58,7 +60,9 @@ Be noted that since the button pin is shared with the flash LED (this is the ava
 
 ## The Example Model - Cat & Dog Classification
 
-I used Microsoft's [Kaggle Cats and Dogs Dataset](https://www.microsoft.com/en-us/download/details.aspx?id=54765) which has 12,500 cats and 12,500 dogs. 24,969 photos had successfully uploaded and split into 80-20% training/test sets.
+I used Microsoft's [Kaggle Cats and Dogs Dataset](https://www.microsoft.com/en-us/download/details.aspx?id=54765) which has 12,500 cats and 12,500 dogs. 24,969 photos had successfully uploaded and split into 80-20% training/test sets. The variety of the images is perfect since we are not doing YOLO- or SSD- style object detection.
+
+![下載](https://user-images.githubusercontent.com/44191076/154785876-b65de5e1-acba-4c2a-9c25-01d02e9b7a2b.png)
 
 The model I choose was ```MobileNetV1 96x96 0.25 (no final dense layer, 0.1 dropout)``` with transfer learning. Since free Edge Impulse accounts has a training time limit of 20 minutes per job, I can only train the model for 5 cycles. (You can go [ask for more](https://forum.edgeimpulse.com/t/err-deadlineexceeded-ways-to-fix-this/2354/2) though...) I imagine if you have only a dozen images per class, you can try better models or longer training cycles.
 
@@ -74,9 +78,9 @@ You can find my published Edge Impulse project here: [esp32-cam-cat-dog](https:/
 
 The camera captures 240x240 images and resize them into 96x96. The inference time is 2607 ms (2.6 secs) per image, which is not very fast,  with mostly good results. I don't know yet if different image sets or models may effect the result.
 
-## Bare Example Version
+## Boilerplate Version
 
-The [edge-impulse-esp32-cam-bare](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam-bare) is the version that dosen't use an external display. You can only try to point the camera to the images and read the prediction via serial port.
+The [edge-impulse-esp32-cam-bare](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam-bare) is the version that dosen't use any external devices. The model would be running in a loop non-stop. You can try to point the camera to the images and read the prediction via serial port (use Arduino IDE 1.x).
 
 ![bogdan-farca-CEx86maLUSc-unsplash](https://user-images.githubusercontent.com/44191076/153636524-9b2edab9-7c50-4aa1-9d6e-74477d67011f.jpg)
 
