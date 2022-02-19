@@ -43,7 +43,7 @@ The USB-TTL's GND should be connected to the breadboard, not the ESP32-CAM itsel
 | TFT pins | ESP32-CAM |
 | --- | --- |
 | SCK (SCL) | GPIO 14 |
-| MOST (SDA) | GPIO 13 |
+| MOSI (SDA) | GPIO 13 |
 | RESET (RST) | GPIO 12 |
 | DC | GPIO 2 |
 | CS | GPIO 15 |
