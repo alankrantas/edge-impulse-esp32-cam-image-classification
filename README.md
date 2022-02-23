@@ -12,6 +12,8 @@ This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpuls
 
 See the [video demonstration](https://www.youtube.com/watch?v=UoWfiEZE0Y4)
 
+[中文版介紹](https://alankrantas.medium.com/tinyml-%E5%BD%B1%E5%83%8F%E8%BE%A8%E8%AD%98%E5%BE%AE%E5%9E%8B%E5%8C%96-%E5%9C%A8%E6%88%90%E6%9C%AC-10-%E7%BE%8E%E5%85%83%E7%9A%84-esp32-cam-%E9%96%8B%E7%99%BC%E6%9D%BF%E4%B8%8A%E5%8D%B3%E6%99%82%E5%88%86%E9%A1%9E%E8%B2%93%E7%8B%97-%E5%BE%9E%E6%AD%A4%E8%B7%9F%E9%BA%BB%E7%85%A9%E7%9A%84-wifi-%E9%80%A3%E7%B7%9A%E8%AA%AA%E6%8B%9C%E6%8B%9C-%E4%BD%BF%E7%94%A8-mobilenet-v1-%E6%A8%A1%E5%9E%8B%E8%88%87%E9%81%B7%E7%A7%BB%E5%AD%B8%E7%BF%92-10fb02da83e9)
+
 ## Setup
 
 The following is needed in your Arduino IDE:
@@ -30,7 +32,7 @@ Be noted that you won't be able to read any serial output if you use Arduino IDE
 
 ![wiring](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/raw/main/esp32-cam-edge-impulse.png)
 
-The whole system is powered from a power module that can output both 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger (power modules require 6V+) to provide stable power. My power module can output 500 mA max (you don't need a lot since we don't use WiFi).
+For the ESP32-CAM, the side with the reset button is "up". The whole system is powered from a power module that can output both 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger (power modules require 6.5V+ to provide stable 5V). My power module only output 500 mA max - you don't need a lot since we don't use WiFi.
 
 | USB-TTL pins | ESP32-CAM |
 | --- | --- |
