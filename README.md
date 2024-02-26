@@ -4,7 +4,9 @@
 
 This example is for running a micro neural network model on the 10-dollar Ai-Thinker ESP32-CAM board and show the image classification results on a small TFT LCD display.
 
-This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpulse/example-esp32-cam) with simplified code, TFT support and copied necessary libraries from Espressif's [esp-face](https://github.com/Yuri-R-Studio/esp-face). ```esp-face``` had been changed a lot into [esp-dl](https://github.com/espressif/esp-dl) and thus broke the original example. The original example requires WiFi and has image lagging problems.
+> Be noted that I am not testing and improving this any further. This is simply a proof-of-concept and demonstration that you can make simple and practical edge AI devices without making them overly complicated.
+
+This is modified from [ESP32 Cam and Edge Impulse](https://github.com/edgeimpulse/example-esp32-cam) with simplified code, TFT support and copied necessary libraries from Espressif's [esp-face](https://github.com/Yuri-R-Studio/esp-face). ```esp-face``` had been refactored into [esp-dl](https://github.com/espressif/esp-dl) to support their other products and thus broke the original example. The original example also requires WiFi connection and has image lagging problems, which makes it difficult to use. My version works more like a hand-held point and shoot camera.
 
 > See the original example repo or [this article](https://www.survivingwithandroid.com/tinyml-esp32-cam-edge-image-classification-with-edge-impulse/) about how to generate your own model on Edge Impulse. You can also still run the original example by copy every libraries in this example to the project directory, then re-open the .ino script.
 
@@ -21,8 +23,8 @@ The following is needed in your Arduino IDE:
 * [Arduino-ESP32 board support](https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json) (select ```Ai Thinker ESP32-CAM```)
 * [Adafruit GFX Library](https://github.com/adafruit/Adafruit-GFX-Library)
 * [Adafruit ST7735 and ST7789 Library](https://github.com/adafruit/Adafruit-ST7735-Library)
-* [Import](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries) the Edge Impulse model library
-* Download [edge-impulse-esp32-cam](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam) from this repo and open the .ino file in the directory.
+* [Import](https://docs.arduino.cc/software/ide-v1/tutorials/installing-libraries) the model library you've generated from Edge Impulse Studio
+* Download [edge-impulse-esp32-cam](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam) from this repo and open the ```.ino``` file in the directory.
 
 Be noted that you won't be able to read any serial output if you use Arduino IDE 2.0!
 
@@ -32,7 +34,7 @@ Be noted that you won't be able to read any serial output if you use Arduino IDE
 
 ![wiring](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/raw/main/esp32-cam-edge-impulse.png)
 
-For the ESP32-CAM, the side with the reset button is "up". The whole system is powered from a power module that can output both 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger (power modules require 6.5V+ to provide stable 5V). My power module only output 500 mA max - you don't need a lot since we don't use WiFi.
+For the ESP32-CAM, the side with the reset button is "up". The whole system is powered from a power module that can output both 5V and 3.3V. The ESP32-CAM is powered by 5V and TFT by 3.3V. I use a 7.5V 1A charger (power modules require 6.5V+ to provide stable 5V). The power module I use only output 500 mA max - but you don't need a lot since we don't use WiFi.
 
 | USB-TTL pins | ESP32-CAM |
 | --- | --- |
@@ -62,27 +64,27 @@ Be noted that since the button pin is shared with the flash LED (this is the ava
 
 ## The Example Model - Cat & Dog Classification
 
-I used Microsoft's [Kaggle Cats and Dogs Dataset](https://www.microsoft.com/en-us/download/details.aspx?id=54765) which has 12,500 cats and 12,500 dogs. 24,969 photos had successfully uploaded and split into 80-20% training/test sets. The variety of the images is perfect since we are not doing YOLO- or SSD- style object detection.
+My demo model used Microsoft's [Kaggle Cats and Dogs Dataset](https://www.microsoft.com/en-us/download/details.aspx?id=54765) which has 12,500 cats and 12,500 dogs. 24,969 photos had successfully uploaded and split into 80-20% training/test sets. The variety of the images is perfect since we are not doing YOLO- or SSD- style object detection.
 
 ![下載](https://user-images.githubusercontent.com/44191076/154785876-b65de5e1-acba-4c2a-9c25-01d02e9b7a2b.png)
 
 The model I choose was ```MobileNetV1 96x96 0.25 (no final dense layer, 0.1 dropout)``` with transfer learning. Since free Edge Impulse accounts has a training time limit of 20 minutes per job, I can only train the model for 5 cycles. (You can go [ask for more](https://forum.edgeimpulse.com/t/err-deadlineexceeded-ways-to-fix-this/2354/2) though...) I imagine if you have only a dozen images per class, you can try better models or longer training cycles.
 
-Anyway, I got ```89.8%``` accuracy for training set and ```86.97%``` for test set, which seems to be decent enough.
+Anyway, I got ```89.8%``` accuracy for training set and ```86.97%``` for test set, which seems decent enough.
 
 ![1](https://user-images.githubusercontent.com/44191076/153631673-96b90c0b-5745-43b9-9e5f-9a426d8bfe61.png)
 
-Also, ESP32-CAM is not yet an officially supported board, so I cannot use EON Tuner for futher find-tuning.
+Also, ESP32-CAM is not yet an officially supported board when I created this project, so I cannot use EON Tuner for futher find-tuning.
 
-You can find my published Edge Impulse project here: [esp32-cam-cat-dog](https://studio.edgeimpulse.com/public/76904/latest).
+You can find my published Edge Impulse project here: [esp32-cam-cat-dog](https://studio.edgeimpulse.com/public/76904/latest). [ei-esp32-cam-cat-dog-arduino-1.0.4.zip](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/blob/main/ei-esp32-cam-cat-dog-arduino-1.0.4.zip) is the downloaded Arduino library which can be imported into Ardiono IDE.
 
-[ei-esp32-cam-cat-dog-arduino-1.0.4.zip](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/blob/main/ei-esp32-cam-cat-dog-arduino-1.0.4.zip) is the downloaded Arduino library which can be imported into Ardiono IDE.
+The camera captures 240x240 images and resize them into 96x96 for the model input, and again resize the original image to 120x120 for the TFT display. The model inference time (prediction time) is 2607 ms (2.6 secs) per image, which is not very fast, with mostly good results. I don't know yet if different image sets or models may effect the result.
 
-The camera captures 240x240 images and resize them into 96x96. The inference time is 2607 ms (2.6 secs) per image, which is not very fast,  with mostly good results. I don't know yet if different image sets or models may effect the result.
+> Note: the demo model has only two classes - dog and cat - thus it will try "predict" whatever it sees to either dogs or cats. A better model should have a third class of "not dogs nor cats" to avoid invalid responses.
 
 ## Boilerplate Version
 
-The [edge-impulse-esp32-cam-bare](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam-bare) is the version that dosen't use any external devices. The model would be running in a loop non-stop. You can try to point the camera to the images and read the prediction via serial port (use Arduino IDE 1.x).
+The [edge-impulse-esp32-cam-bare](https://github.com/alankrantas/edge-impulse-esp32-cam-image-classification/tree/main/edge-impulse-esp32-cam-bare) is the version that dosen't use any external devices. The model would be running in a non-stop loop. You can try to point the camera to the images and read the prediction via serial port (use Arduino IDE 1.x).
 
 ![bogdan-farca-CEx86maLUSc-unsplash](https://user-images.githubusercontent.com/44191076/153636524-9b2edab9-7c50-4aa1-9d6e-74477d67011f.jpg)
 
